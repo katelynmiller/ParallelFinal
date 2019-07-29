@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+
 #include <omp.h>
 
-#include <time.h>
+#include "simulation.h"
 
 int main(int argc, int **argv)
 {
     int num_updates = 100;
-
 
     int track_size = 20;
 
@@ -25,8 +26,8 @@ int main(int argc, int **argv)
     //}
 
 
-    Train * train_track = new Train[track_size];
-    Station * station_track = new Station[track_size];
+    struct Train * train_track = (struct Train*)malloc(track_size * sizeof(struct Train));
+    struct Station * station_track = (struct Station*)malloc(track_size * sizeof(struct Station));
 
 
     //{ Track Initializations:
