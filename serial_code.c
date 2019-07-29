@@ -30,7 +30,22 @@ int main(int argc, int **argv)
     struct Station * station_track = (struct Station*)malloc(track_size * sizeof(struct Station));
 
 
-    //{ Track Initializations:
+    //{ Pre-initializations:
+
+    for (int i = 0; i < track_size; ++i)
+    {
+        train_track[i].ID = 0;
+        train_track[i].num_passengers = 0;
+
+        station_track[i].ID = 0;
+        station_track[i].passengers_arriving = 0;
+        station_track[i].passengers_waiting = 0;
+    }
+
+    //}
+
+
+    //{ Actual Track Initializations:
 
     srand(time(NULL));
 
@@ -41,7 +56,7 @@ int main(int argc, int **argv)
     {
         int temp_position = rand() % track_size;
 
-        if (train_track[temp_position].ID != 0)
+        if (train_track[temp_position].ID == 0)
         {
             train_track[temp_position].ID = id_counter++;
         }
@@ -58,7 +73,7 @@ int main(int argc, int **argv)
     {
         int temp_position = rand() % track_size;
 
-        if (station_track[temp_position].ID != 0)
+        if (station_track[temp_position].ID == 0)
         {
             station_track[temp_position].ID = id_counter++;
         }
@@ -71,16 +86,34 @@ int main(int argc, int **argv)
     //}
 
 
-    for(int i = 0; i < num_trains; ++i)
+    //{ Debug Info:
+
+    printf("Stations:\n");
+
+    for(int i = 0; i < track_size; ++i)
     {
-        //
+        printf("station_track[%d].ID = %d\n", i, station_track[i].ID);
+
+        printf("station_track[%d].passengers_arriving = %d\n", i, station_track[i].passengers_arriving);
+
+        printf("station_track[%d].passengers_waiting = %d\n", i, station_track[i].passengers_waiting);
+
+        printf("\n");
     }
 
 
-    for(int i = 0; i < num_stations; ++i)
+    printf("\n\nTrains:\n");
+
+    for(int i = 0; i < track_size; ++i)
     {
-        //
+        printf("train_track[%d].ID = %d\n", i, train_track[i].ID);
+
+        printf("train_track[%d].passengers_arriving = %d\n", i, train_track[i].num_passengers);
+
+        printf("\n");
     }
+
+    //}
 
 
     for(int i = 0; i < num_updates; ++i)
