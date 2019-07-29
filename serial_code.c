@@ -35,15 +35,15 @@ int main(int argc, int **argv)
     srand(time(NULL));
 
 
-    int id_counter = 0;
+    int id_counter = 1;
 
     for(int i = 0; i < num_trains; ++i)
     {
         int temp_position = rand() % track_size;
 
-        if (train_track[temp_position] != NULL)
+        if (train_track[temp_position].ID != 0)
         {
-            train_track[temp_position] = new Train(id_counter++);
+            train_track[temp_position].ID = id_counter++;
         }
         else
         {
@@ -52,15 +52,15 @@ int main(int argc, int **argv)
     }
 
 
-    id_counter = 0;
+    id_counter = 1;
 
     for(int i = 0; i < num_stations; ++i)
     {
         int temp_position = rand() % track_size;
 
-        if (station_track[temp_position] != NULL)
+        if (station_track[temp_position].ID != 0)
         {
-            station_track[temp_position] = new Station(id_counter++);
+            station_track[temp_position].ID = id_counter++;
         }
         else
         {
@@ -71,9 +71,20 @@ int main(int argc, int **argv)
     //}
 
 
+    for(int i = 0; i < num_trains; ++i)
+    {
+        //
+    }
+
+
+    for(int i = 0; i < num_stations; ++i)
+    {
+        //
+    }
+
+
     for(int i = 0; i < num_updates; ++i)
     {
-
-
+        //
     }
 }
