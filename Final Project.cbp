@@ -34,9 +34,10 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="include/Itinerary.h" />
-		<Unit filename="main.cpp" />
-		<Unit filename="src/Itinerary.cpp" />
+		<Unit filename="serial_code.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="simulation.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

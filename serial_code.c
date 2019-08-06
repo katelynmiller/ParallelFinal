@@ -120,4 +120,18 @@ int main(int argc, int **argv)
     {
         //
     }
+
+    for(int i = 0; i < num_trains; i++)
+    {
+        if(Train.StationID == Station.ID)
+        {
+            while(Train.num_passengers != 0)
+            {
+                Train.num_passengers--;
+                printf("People on train %d",Train.num_passengers);
+                Station.passengers_arriving++;
+                printf("People on track %d",Station.passengers_arriving);
+            }
+        }
+    }
 }
