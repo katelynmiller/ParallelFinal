@@ -36,6 +36,7 @@ int main(int argc, int **argv)
     {
         train_track[i].ID = 0;
         train_track[i].num_passengers = 0;
+        train_track[i].done_station = 0;
 
         station_track[i].ID = 0;
         station_track[i].passengers_arriving = 0;
@@ -124,7 +125,14 @@ int main(int argc, int **argv)
             {
                 if (station_track[q].ID != 0)
                 {
-                    //Unloading process begins.
+                    if (train_track[q].done_station == 1)
+                    {
+                        //Move the train.
+                    }
+                    else
+                    {
+                        //
+                    }
                 }
                 else    //Move the train if possible.
                 {
@@ -143,9 +151,11 @@ int main(int argc, int **argv)
                     {
                         train_track[looking_position].ID = train_track[q].ID;
                         train_track[looking_position].num_passengers = train_track[q].num_passengers;
+                        train_track[looking_position].done_station = 0;
 
                         train_track[q].ID = 0;
                         train_track[q].num_passengers = 0;
+                        train_track[q].done_station = 0;
                     }
                     else
                     {
