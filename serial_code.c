@@ -12,8 +12,8 @@ int main(int argc, int **argv)
 
     int track_size = 20;
 
-    int num_trains = 5;
-    int num_stations = 4;
+    int num_trains = 1;
+    int num_stations = 1;
 
 
     //{ Error Checking:
@@ -121,20 +121,64 @@ int main(int argc, int **argv)
     {
         for (int q = 0; q < track_size; ++q)
         {
-            if (train_track[q].ID != 0)
+            if (train_track[q].ID != 0) //There is a train at this position.
             {
-                if (station_track[q].ID != 0)
+                if (station_track[q].ID != 0)   //There is a station at this position.
                 {
-                    if (train_track[q].done_station == 1)
+                    if (train_track[q].done_station == 1)   //The train is done loading/unloading (it can move).
                     {
-                        //Move the train.
-                    }
+                        int looking_position;
+
+                        if (q == track_size - 1)
+                        {
+                            looking_position = 0;
+                        }
+                        else
+                        {
+                            looking_position = q + 1;
+                        }
+
+                        if (train_track[looking_position].ID == 0)  //There is a free spot to move.
+                        {
+                            train_track[looking_position].ID = train_track[q].ID;
+                            train_track[looking_position].num_passengers = train_track[q].num_passengers;
+                            train_track[looking_position].done_station = 0;
+
+                            train_track[q].ID = 0;
+                            train_track[q].num_passengers = 0;
+                            train_track[q].done_station = 0;
+                        }
+                        else
+                        {
+                            //Do nothing; it can't move.
+                        }
+                    }//The train is done loading/unloading (it can move).
                     else
                     {
-                        //
+                        int allPassengers = train_track[q].num_passengers;
+
+                        for (int i = 0; i < allPassengers; ++i)
+                        {
+                            train_track[q].num_passengers--;
+                            station_track[q].passengers_arriving++;
+                        } //end for
+
+
+                        int passengers_waiting = station_track[q].passengers_waiting;
+
+                        for (int i = 0; i < passengers_waiting; ++i)
+                        {
+                            train_track[q].num_passengers++;
+                            station_track[q].passengers_waiting--;
+                        } //end for
+
+
+                        station_track[q].passengers_waiting = station_track[q].passengers_arriving;
+
+                        station_track[q].passengers_arriving = 0;
                     }
-                }
-                else    //Move the train if possible.
+                }//There is a station at this position.
+                else
                 {
                     int looking_position;
 
@@ -162,15 +206,7 @@ int main(int argc, int **argv)
                         //Do nothing; it can't move.
                     }
                 }
-
-//                while(Train.num_passengers != 0)
-//                {
-//                    Train.num_passengers--;
-//                    printf("People on train %d", Train.num_passengers);
-//                    Station.passengers_arriving++;
-//                    printf("People on track %d", Station.passengers_arriving);
-//                }
-            }
+            }//There is a train at this position.
         }
     }
 }
