@@ -9,6 +9,7 @@ struct Train
     int num_passengers;
 
     int done_station;
+    int done_move;
 };
 
 
