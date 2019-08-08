@@ -8,12 +8,12 @@
 
 int main(int argc, char ** argv)
 {
-    int num_updates = 12;
+    int num_updates = 10000;
 
-    int track_size = 6;
+    int track_size = 1000;
 
-    int num_trains = 1;
-    int num_stations = 1;
+    int num_trains = 200;
+    int num_stations = 300;
 
 
     //{ Error Checking:
@@ -35,7 +35,7 @@ int main(int argc, char ** argv)
     for (int i = 0; i < track_size; ++i)
     {
         train_track[i].ID = 0;
-        train_track[i].num_passengers = 10;
+        train_track[i].num_passengers = 0;
         train_track[i].done_station = 0;
         train_track[i].done_move = 0;
 
@@ -61,6 +61,8 @@ int main(int argc, char ** argv)
         if (train_track[temp_position].ID == 0)
         {
             train_track[temp_position].ID = id_counter++;
+
+            train_track[temp_position].num_passengers = 600;
         }
         else
         {
@@ -87,7 +89,7 @@ int main(int argc, char ** argv)
 
     //}
 
-
+/*
     //{ Debug Info:
 
     printf("Stations:\n");
@@ -120,7 +122,7 @@ int main(int argc, char ** argv)
     }
 
     //}
-
+*/
 
     for (int i = 0; i < num_updates; ++i)
     {

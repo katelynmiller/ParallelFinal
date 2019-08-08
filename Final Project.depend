@@ -1,10 +1,10 @@
 # depslib dependency file v1.0
-1565210622 source:c:\users\stonisg\desktop\parallel computing\final project\final project\serial_code.c
+1565213902 source:c:\users\stonisg\desktop\parallel computing\final project\final project\serial_code.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
 	<omp.h>
 	"simulation.h"
 
-1565127316 c:\users\stonisg\desktop\parallel computing\final project\final project\simulation.h
+1565211109 c:\users\stonisg\desktop\parallel computing\final project\final project\simulation.h
 
