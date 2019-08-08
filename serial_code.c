@@ -8,12 +8,12 @@
 
 int main(int argc, char ** argv)
 {
-    int num_updates = 10000;
+    int num_updates = 100;
 
-    int track_size = 1000;
+    int track_size = 20;
 
-    int num_trains = 200;
-    int num_stations = 300;
+    int num_trains = 4;
+    int num_stations = 2;
 
 
     //{ Error Checking:
@@ -241,8 +241,47 @@ int main(int argc, char ** argv)
             train_track[q].done_move = 0;
         }
 
-        printAll(track_size, train_track, station_track);
+        //printAll(track_size, train_track, station_track);
+
+        testing(i, track_size, train_track, station_track);
+        printf("\n\n");
     }
+}
+
+
+void testing(int time_step, int track_size, struct Train * train_track, struct Station * station_track)
+{
+    printf("Time step %d:\n", time_step);
+
+    char * stations = (char*)malloc(track_size * sizeof(char));
+    char * trains = (char*)malloc(track_size * sizeof(char));
+
+    for (int i = 0; i < track_size; ++i)
+    {
+        if (station_track[i].ID != 0)
+        {
+            stations[i] = 'S';
+        }
+        else
+        {
+            stations[i] = '-';
+        }
+
+
+        if (train_track[i].ID != 0)
+        {
+            trains[i] = 'T';
+        }
+        else
+        {
+            trains[i] = '-';
+        }
+    }
+
+    printf("%s\n%s", stations, trains);
+
+    free(stations);
+    free(trains);
 }
 
 
